@@ -1,0 +1,17 @@
+.label {
+  margin: 0;
+  padding-bottom: 3px;
+}
+
+.textBlock {
+  border-radius: 5px;
+  margin-bottom: 10px;
+  resize: none;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.textBlock:hover {
+  border: 1px solid rgb(47, 168, 255);
+  outline: 0;
+}
