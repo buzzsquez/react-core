@@ -1,0 +1,51 @@
+.profile {
+  border-radius: 10px;
+  box-shadow: 0 0 20px;
+  width: 600px;
+  padding: 20px 100px 20px 100px;
+}
+
+.title {
+  color: red;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
+.info {
+  padding-bottom: 20px;
+  font-size: 25px;
+}
+
+.infoText {
+  color: rgb(88, 88, 223);
+  word-wrap: break-word;
+}
+
+.infoData {
+  color: black;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.infoNumber {
+  color: black;
+  margin-left: 75px;
+}
+
+.infoSite {
+  color: black;
+  margin-left: 120px;
+}
+
+.infoAbout {
+  color: rgb(88, 88, 223);
+  word-wrap: break-word;
+  padding-bottom: 10px;
+}
+
+.infoDataLong {
+  font-size: 18px;
+  color: black;
+}

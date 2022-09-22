@@ -1,14 +1,14 @@
 import React from 'react';
-import Title from './components/Title';
-import Form from './components/Form';
 import styles from './App.module.css';
+import Questionnaire from './components/Questionnaire';
 
 function App() {
   return (
-    <div className={styles.main}>
-      <Title />
-      <Form />
-    </div>
+    <>
+      <div className={styles.main}>
+        <Questionnaire />
+      </div>
+    </>
   );
 }
 

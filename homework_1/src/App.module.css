@@ -1,4 +1,4 @@
-.main {
+/* .main {
   box-sizing: border-box;
   margin: 0 auto;
   padding: 12px;
@@ -8,4 +8,10 @@
   border-radius: 10px;
   font-family: sans-serif;
   box-shadow: 0 0 20px;
+} */
+
+.main {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
