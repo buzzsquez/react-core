@@ -1,6 +1,6 @@
-import React from 'react';
-import { phoneMask } from '../../helpers';
-import { validationRules } from './validationRules';
+import React, { useState } from 'react';
+import phoneMask from '../../helpers';
+import validationRules from './validationRules';
 import Form from '../Form';
 import Profile from '../Profile';
 
@@ -16,38 +16,27 @@ const initialState = {
     project: '',
   },
   validErrors: {},
-  formState: {
-    isEmptyField: false,
-  },
+  isEmptyField: false,
   isProfileReady: false,
 };
 
-class Questionnaire extends React.Component {
-  constructor(props) {
-    super(props);
+function Questionnaire() {
+  const [formValues, setFormValues] = useState(initialState.formValues);
+  const [validErrors, setValidErrors] = useState(initialState.validErrors);
+  const [isEmptyField, setIsEmptyField] = useState(initialState.isEmptyField);
+  const [isProfileReady, setIsProfileReady] = useState(initialState.isProfileReady);
 
-    this.state = initialState;
+  const {
+    name, surname, date, phone, site, about, stack, project,
+  } = formValues;
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleClearForm = this.handleClearForm.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
-  }
-
-  handleBlur(event) {
+  function handleBlur(event) {
     const { value, name } = event.target;
-    const finalValue = value.trim();
 
-    this.setState((state) => ({
-      ...state,
-      formValues: {
-        ...state.formValues,
-        [name]: finalValue,
-      },
-    }));
+    setFormValues((prevValue) => ({ ...prevValue, [name]: value.trim() }));
   }
 
-  handleChange(event) {
+  function handleChange(event) {
     const { name, value } = event.target;
     let finalValue = value;
 
@@ -55,113 +44,82 @@ class Questionnaire extends React.Component {
       finalValue = phoneMask(value);
     }
 
-    if (this.state.validErrors[name]) {
+    if (validErrors[name]) {
       const isValidName = validationRules[name];
 
-      this.setState((state) => ({
-        ...state,
-        validErrors: {
-          ...state.validErrors,
-          [name]: !isValidName,
-        },
-      }));
+      setValidErrors((prevValue) => ({ ...prevValue, [name]: !isValidName }));
     }
 
-    this.setState((state) => ({
-      ...state,
-      formValues: {
-        ...state.formValues,
-        [name]: finalValue,
-      },
-    }));
+    setFormValues((prevValue) => ({ ...prevValue, [name]: finalValue }));
   }
 
-  handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
 
-    const { formValues } = this.state;
     const isExist = Object.values(formValues).every((value) => !!value.trim());
 
     if (!isExist) {
-      this.setState({
-        formState: {
-          isEmptyField: true,
-        },
-      });
+      setIsEmptyField(true);
 
       return;
     }
 
     const validErrorsObj = {};
 
-    for (let key in formValues) {
+    for (const key in formValues) {
       validErrorsObj[key] = !validationRules[key](formValues[key]);
     }
 
-    this.setState((state) => ({
-      ...state,
-      validErrors: validErrorsObj,
-    }));
+    setValidErrors(validErrorsObj);
 
     const isValidFields = Object.values(validErrorsObj).every((value) => !value);
 
     if (isExist && isValidFields) {
-      this.setState((state) => ({
-        ...state,
-        isProfileReady: true,
-      }));
-    } else {
-      this.setState((state) => ({
-        ...state,
-        isProfileReady: false,
-      }));
+      setIsProfileReady(true);
     }
   }
 
-  handleClearForm() {
-    this.setState(initialState);
+  function handleClearForm() {
+    setFormValues(initialState.formValues);
+    setValidErrors(initialState.validErrors);
+    setIsEmptyField(initialState.isEmptyField);
+    setIsProfileReady(initialState.isProfileReady);
   }
 
-  render() {
-    const { name, surname, date, phone, site, about, stack, project } = this.state.formValues;
-    const { isEmptyField } = this.state.formState;
-    const { validErrors } = this.state;
-
-    return (
-      <>
-        {!this.state.isProfileReady && (
-          <Form
-            name={name}
-            surname={surname}
-            date={date}
-            phone={phone}
-            site={site}
-            about={about}
-            stack={stack}
-            project={project}
-            isEmptyField={isEmptyField}
-            validErrors={validErrors}
-            onChange={this.handleChange}
-            onBlur={this.handleBlur}
-            onSubmit={this.handleSubmit}
-            onClick={this.handleClearForm}
-          />
-        )}
-        {this.state.isProfileReady && (
-          <Profile
-            name={name}
-            surname={surname}
-            date={date}
-            phone={phone}
-            site={site}
-            about={about}
-            stack={stack}
-            project={project}
-          />
-        )}
-      </>
-    );
-  }
+  return (
+    <>
+      {!isProfileReady && (
+        <Form
+          name={name}
+          surname={surname}
+          date={date}
+          phone={phone}
+          site={site}
+          about={about}
+          stack={stack}
+          project={project}
+          isEmptyField={isEmptyField}
+          validErrors={validErrors}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          onSubmit={handleSubmit}
+          onClick={handleClearForm}
+        />
+      )}
+      {isProfileReady && (
+        <Profile
+          name={name}
+          surname={surname}
+          date={date}
+          phone={phone}
+          site={site}
+          about={about}
+          stack={stack}
+          project={project}
+        />
+      )}
+    </>
+  );
 }
 
 export default Questionnaire;
