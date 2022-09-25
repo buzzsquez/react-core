@@ -87,8 +87,8 @@ function Questionnaire() {
   }
 
   return (
-    <>
-      {!isProfileReady && (
+    !isProfileReady
+      ? (
         <Form
           name={name}
           surname={surname}
@@ -105,8 +105,8 @@ function Questionnaire() {
           onSubmit={handleSubmit}
           onClick={handleClearForm}
         />
-      )}
-      {isProfileReady && (
+      )
+      : (
         <Profile
           name={name}
           surname={surname}
@@ -117,8 +117,7 @@ function Questionnaire() {
           stack={stack}
           project={project}
         />
-      )}
-    </>
+      )
   );
 }
 
