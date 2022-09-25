@@ -17,7 +17,7 @@ class Area extends React.Component {
           onChange={onChange}
           onBlur={onBlur}
           maxLength="2000"
-        ></textarea>
+        />
         {value.length <= 600 && <div className={styles.counter}>{`Осталось ${600 - value.length} / 600 символов`}</div>}
         {(isNotValid || value.length > 600) && <div className={styles.fieldError}>{warningMessage}</div>}
         {isEmptyField && <div className={styles.fieldError}>Поле пустое. Заполните пожалуйста</div>}

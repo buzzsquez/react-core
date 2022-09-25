@@ -127,39 +127,34 @@ class Questionnaire extends React.Component {
     const { isEmptyField } = this.state.formState;
     const { validErrors } = this.state;
 
-    return (
-      <>
-        {!this.state.isProfileReady && (
-          <Form
-            name={name}
-            surname={surname}
-            date={date}
-            phone={phone}
-            site={site}
-            about={about}
-            stack={stack}
-            project={project}
-            isEmptyField={isEmptyField}
-            validErrors={validErrors}
-            onChange={this.handleChange}
-            onBlur={this.handleBlur}
-            onSubmit={this.handleSubmit}
-            onClick={this.handleClearForm}
-          />
-        )}
-        {this.state.isProfileReady && (
-          <Profile
-            name={name}
-            surname={surname}
-            date={date}
-            phone={phone}
-            site={site}
-            about={about}
-            stack={stack}
-            project={project}
-          />
-        )}
-      </>
+    return !this.state.isProfileReady ? (
+      <Form
+        name={name}
+        surname={surname}
+        date={date}
+        phone={phone}
+        site={site}
+        about={about}
+        stack={stack}
+        project={project}
+        isEmptyField={isEmptyField}
+        validErrors={validErrors}
+        onChange={this.handleChange}
+        onBlur={this.handleBlur}
+        onSubmit={this.handleSubmit}
+        onClick={this.handleClearForm}
+      />
+    ) : (
+      <Profile
+        name={name}
+        surname={surname}
+        date={date}
+        phone={phone}
+        site={site}
+        about={about}
+        stack={stack}
+        project={project}
+      />
     );
   }
 }
