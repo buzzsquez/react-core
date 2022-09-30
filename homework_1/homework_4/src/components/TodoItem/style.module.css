@@ -2,7 +2,7 @@
   list-style: none;
   display: flex;
   list-style: none;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 20px;
 }
