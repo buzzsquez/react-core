@@ -1,0 +1,18 @@
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 30px;
+  color: #5d0cff;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.add {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
