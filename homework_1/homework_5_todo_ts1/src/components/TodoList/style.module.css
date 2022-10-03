@@ -1,0 +1,42 @@
+.tasks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons {
+  margin-bottom: 30px;
+}
+
+.all {
+  height: 40px;
+  width: 100px;
+  border-radius: 10px;
+  outline: none;
+  background: linear-gradient(90deg, rgb(152, 125, 207) 0%, rgba(155, 0, 250, 1) 100%);
+  color: white;
+  font-size: 20px;
+  margin-right: 30px;
+}
+
+.active {
+  height: 40px;
+  width: 150px;
+  border-radius: 10px;
+  outline: none;
+  background: linear-gradient(90deg, rgb(255, 1, 1) 0%, rgb(69, 1, 111) 100%);
+  color: white;
+  font-size: 20px;
+  margin-right: 30px;
+}
+
+.completed {
+  height: 40px;
+  width: 150px;
+  border-radius: 10px;
+  outline: none;
+  background: linear-gradient(90deg, rgb(12, 255, 121) 0%, rgba(155, 0, 250, 1) 100%);
+  color: white;
+  font-size: 20px;
+}

@@ -1,0 +1,48 @@
+.item {
+  list-style: none;
+  display: flex;
+  list-style: none;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.input {
+  height: 15px;
+  width: 400px;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  background: linear-gradient(90deg, rgba(93, 12, 255, 1) 0%, rgba(155, 0, 250, 1) 100%);
+  color: white;
+  font-size: 20px;
+}
+
+.buttons {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  border: none;
+  background: transparent;
+}
+
+.done {
+  text-decoration: line-through;
+  height: 15px;
+  width: 400px;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  background: linear-gradient(90deg, rgba(93, 12, 255, 1) 0%, rgba(155, 0, 250, 1) 100%);
+  color: white;
+  font-size: 20px;
+}
+
+.hide {
+  display: none;
+}
