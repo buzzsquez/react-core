@@ -13,9 +13,7 @@ const AddTask: React.FC = () => {
   }
 
   function addTask (): void {
-    if (todo === '') {
-      return
-    } else {
+    if (todo) {
       dispatch(addTodo({
         id: Math.floor(Math.random() * 1000) + 1,
         item: todo,
@@ -23,6 +21,8 @@ const AddTask: React.FC = () => {
       }))
       setTodo('')
     }
+
+    return;
   }
 
   return (
