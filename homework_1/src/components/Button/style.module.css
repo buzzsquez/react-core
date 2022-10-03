@@ -1,0 +1,32 @@
+.input[type='submit'],
+[type='reset'] {
+  align-items: center;
+  padding: 4px 14px;
+  border-radius: 6px;
+  border: 1px solid black;
+  color: #fff;
+  background: #4B91F7
+}
+
+.input[type='reset'] {
+  background: #85898f
+}
+
+.input:hover {
+  border: 1px solid rgb(47, 168, 255);
+  outline: 0;
+}
+
+.input[type='reset']:hover {
+  border: 1px solid red;
+  outline: 0;
+}
+
+
+.input[type='submit']:active {
+  color: blue
+}
+
+.input[type='reset']:active {
+  color: red;
+}
