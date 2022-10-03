@@ -3,18 +3,40 @@ import styles from './style.module.css';
 
 class Field extends React.Component {
   render() {
+    const {
+      name,
+      value,
+      onChange,
+      onBlur,
+      type,
+      title,
+      maxlength,
+      isEmptyField,
+      min,
+      max,
+      warningMessage,
+      isNotValid,
+    } = this.props;
+
     return (
       <>
-        <label className={styles.label} htmlFor={this.props.id}>
-          {this.props.title}
+        <label className={styles.label} htmlFor={name}>
+          {title}
         </label>
         <input
-          ref={this.props.forwardRef}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
           className={styles.input}
-          type={this.props.type}
-          id={this.props.id}
-          placeholder={this.props.title}
+          type={type}
+          name={name}
+          placeholder={title}
+          maxLength={maxlength}
+          min={min}
+          max={max}
         />
+        {isEmptyField && <div className={styles.fieldError}>Поле пустое. Заполните пожалуйста</div>}
+        {isNotValid && <div className={styles.fieldError}>{warningMessage}</div>}
       </>
     );
   }
